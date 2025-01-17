@@ -12,16 +12,12 @@ const DashboardPage = () => {
   const [osId, setOsId] = useState(""); // State for OS-ID
 
   useEffect(() => {
-    // Retrieve the OS-ID from local storage
-    const storedOsId = localStorage.getItem("os-id");
-    if (storedOsId) {
-      setOsId(storedOsId); // Update state with the retrieved OS-ID
-    }
-
-    // Optionally retrieve username if stored separately
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername); // Update state with the username
+    // Retrieve user details from localStorage
+    const storedDetails = localStorage.getItem("userDetails");
+    if (storedDetails) {
+      const { username, osId } = JSON.parse(storedDetails);
+      setUsername(username); // Update state with the username
+      setOsId(osId); // Update state with the OS-ID
     }
   }, []);
 

@@ -12,16 +12,12 @@ const DashboardPage = () => {
   const [osId, setOsId] = useState(""); // State for OS-ID
 
   useEffect(() => {
-    // Retrieve the OS-ID from local storage
-    const storedOsId = localStorage.getItem("os-id");
-    if (storedOsId) {
-      setOsId(storedOsId); // Update state with the retrieved OS-ID
-    }
-
-    // Optionally retrieve username if stored separately
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername); // Update state with the username
+    // Retrieve user details from localStorage
+    const storedDetails = localStorage.getItem("userDetails");
+    if (storedDetails) {
+      const { username, osId } = JSON.parse(storedDetails);
+      setUsername(username); // Update state with the username
+      setOsId(osId); // Update state with the OS-ID
     }
   }, []);
 
@@ -67,13 +63,9 @@ const DashboardPage = () => {
             className="font-semibold flex items-center gap-1 cursor-pointer text-sm sm:text-base lg:text-lg"
             onClick={toggleDropdown}
           >
-            {username}{" "}
-            <FaChevronDown className="text-xs sm:text-sm lg:text-base" />
+            {username} <FaChevronDown className="text-xs sm:text-sm lg:text-base" />
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base">OS-ID: {osId}</p>
-          <p className="text-xs sm:text-sm lg:text-base">
-            Account Status: Pending Verification
-          </p>
+          <p className="text-xs sm:text-sm lg:text-base">Account Status: Pending Verification</p>
         </div>
         {dropdownOpen && (
           <div className="absolute top-16 sm:top-20 lg:top-24 left-0 bg-gray-200 text-black shadow-lg rounded-lg w-48">

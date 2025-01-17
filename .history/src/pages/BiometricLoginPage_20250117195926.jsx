@@ -1,24 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const BiometricsLoginPage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  // Handle Touch ID verification
-  const handleTouchID = () => {
+  const handleTouchIDClick = () => {
     alert("Finger Print verified successfully");
-    navigate("/dashboard");
+    router.push("/dashboard");
   };
 
-  // Handle Face ID verification
-  const handleFaceID = () => {
+  const handleFaceIDClick = () => {
     alert("FaceID verified successfully");
-    navigate("/dashboard");
+    router.push("/dashboard");
   };
 
-  // Handle OneStep Passcode navigation
-  const handlePasscode = () => {
-    navigate("/password");
+  const handlePasscodeClick = () => {
+    router.push("/password");
   };
 
   return (
@@ -38,9 +35,7 @@ const BiometricsLoginPage = () => {
             className="w-10 h-10 rounded-full object-cover"
             loading="lazy"
           />
-          <span className="text-white text-sm cursor-pointer">
-            Create Account
-          </span>
+          <span className="text-white text-sm cursor-pointer">Create Account</span>
         </div>
         <div className="flex justify-center">
           <img
@@ -64,8 +59,7 @@ const BiometricsLoginPage = () => {
           Login
         </h1>
         <p className="text-gray-400 text-sm mb-2 text-center font-serif">
-          Access Wealth with either your OneStep Passcode, OneStep Biometrics or
-          OneStep ID Verification
+          Access Wealth with either your OneStep Passcode, OneStep Biometrics or OneStep ID Verification
         </p>
 
         <h2 className="text-white text-lg font-bold mt-4 text-center font-serif">
@@ -80,10 +74,9 @@ const BiometricsLoginPage = () => {
         </h3>
 
         <div className="flex flex-wrap justify-center gap-4 mb-6">
-          {/* Touch ID */}
           <div
             className="bg-gray-800 text-white w-28 h-32 flex flex-col items-center justify-center rounded-lg shadow-md cursor-pointer"
-            onClick={handleTouchID}
+            onClick={handleTouchIDClick}
           >
             <img
               src="/fingerprint.png"
@@ -93,10 +86,9 @@ const BiometricsLoginPage = () => {
             />
             <span className="text-sm text-center">Touch ID</span>
           </div>
-          {/* Face ID */}
           <div
             className="bg-gray-800 text-white w-28 h-32 flex flex-col items-center justify-center rounded-lg shadow-md cursor-pointer"
-            onClick={handleFaceID}
+            onClick={handleFaceIDClick}
           >
             <img
               src="/faceID.png"
@@ -133,15 +125,7 @@ const BiometricsLoginPage = () => {
               Select a Messenger
             </h3>
             <div className="flex flex-wrap justify-center gap-2 my-4">
-              {[
-                "google",
-                "twitter",
-                "tiktok",
-                "telegram",
-                "facebook",
-                "pinterest",
-                "whatsapp",
-              ].map((logo) => (
+              {["google", "twitter", "tiktok", "telegram", "facebook", "pinterest", "whatsapp"].map((logo) => (
                 <img
                   key={logo}
                   src={`/${logo}.png`}
@@ -154,9 +138,7 @@ const BiometricsLoginPage = () => {
             <span className="text-yellow-500 underline cursor-pointer">
               Recovery Centre
             </span>
-            <p className="text-gray-400 mb-2 ml-6">
-              Having trouble using Onestep ID Verification?
-            </p>
+            <p className="text-gray-400 mb-2 ml-6">Having trouble using Onestep ID Verification?</p>
             <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-20 py-2 rounded">
               HELP CENTRE
             </button>
@@ -178,13 +160,11 @@ const BiometricsLoginPage = () => {
             <h3 className="text-white font-bold text-center mb-4">Passcode</h3>
             <button
               className="bg-[#7c3aed] hover:bg-purple-700 text-white font-semibold px-8 py-2 rounded mb-4"
-              onClick={handlePasscode}
+              onClick={handlePasscodeClick}
             >
               Onestep Passcode
             </button>
-            <p className="text-gray-400 mb-2 ml-8">
-              Having Trouble using Biometric Verification?
-            </p>
+            <p className="text-gray-400 mb-2 ml-8">Having Trouble using Biometric Verification?</p>
             <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-20 py-2 rounded">
               HELP CENTRE
             </button>

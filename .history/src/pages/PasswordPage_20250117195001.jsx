@@ -157,10 +157,7 @@ const PasswordPage = () => {
               <span>Touch ID</span>
               <span>Face ID</span>
             </div>
-            <button
-              className="bg-[#7c3aed] hover:bg-purple-700 text-white font-semibold px-12 py-2 rounded mt-4 mb-2 ml-8"
-              onClick={handleBiometricsLogin}
-            >
+            <button className="bg-[#7c3aed] hover:bg-purple-700 text-white font-semibold px-12 py-2 rounded mt-4 mb-2 ml-8">
               Onestep Biometrics
             </button>
             <p className="text-gray-400 mb-2 ml-8">

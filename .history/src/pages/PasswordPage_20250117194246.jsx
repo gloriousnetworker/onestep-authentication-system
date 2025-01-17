@@ -1,20 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const PasswordPage = () => {
   const navigate = useNavigate();
+
   const inputsRef = useRef([]);
-  const [passcode, setPasscode] = useState(Array(6).fill(""));
 
   const handleInputChange = (index, event) => {
     const { value } = event.target;
-
-    // Ensure only single-digit input
-    if (!/^\d$/.test(value) && value !== "") return;
-
-    const newPasscode = [...passcode];
-    newPasscode[index] = value;
-    setPasscode(newPasscode);
 
     if (value.length === 1 && index < inputsRef.current.length - 1) {
       inputsRef.current[index + 1].focus();
@@ -30,16 +23,7 @@ const PasswordPage = () => {
   };
 
   const handleProceed = () => {
-    if (passcode.every((digit) => digit !== "")) {
-      console.log("Passcode entered:", passcode.join(""));
-      navigate("/dashboard");
-    } else {
-      alert("Please enter all 6 digits of your passcode.");
-    }
-  };
-
-  const handleBiometricsLogin = () => {
-    navigate("/biometrics-login");
+    console.log("Proceed button clicked");
   };
 
   return (
@@ -157,10 +141,7 @@ const PasswordPage = () => {
               <span>Touch ID</span>
               <span>Face ID</span>
             </div>
-            <button
-              className="bg-[#7c3aed] hover:bg-purple-700 text-white font-semibold px-12 py-2 rounded mt-4 mb-2 ml-8"
-              onClick={handleBiometricsLogin}
-            >
+            <button className="bg-[#7c3aed] hover:bg-purple-700 text-white font-semibold px-12 py-2 rounded mt-4 mb-2 ml-8">
               Onestep Biometrics
             </button>
             <p className="text-gray-400 mb-2 ml-8">

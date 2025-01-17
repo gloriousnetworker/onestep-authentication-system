@@ -64,7 +64,7 @@ const OTPVerificationPage = () => {
       if (enteredOtp === storedOtp && timer > 0) {
         // Success notification and redirect
         showNotification(
-          "OTP verified successfully! Redirecting to Password Page...",
+          "OTP verified successfully! Redirecting to Password...",
           "success"
         );
         navigate("/password");
